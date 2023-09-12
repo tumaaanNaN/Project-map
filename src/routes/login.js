@@ -3,7 +3,12 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const { User } = require("../../db/models");
+const render = require("../lib/renderTemplate");
+const Login = require('../views/Login')
 
+router.get('/', (req,res) => {
+   render(Login, {}, res)
+})
 router.post("/", async (req, res) => {
   try {
     const { login, password } = req.body;
