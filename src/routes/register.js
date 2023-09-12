@@ -3,6 +3,12 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const { User } = require("../../db/models");
+const render = require("../lib/renderTemplate");
+const Register = require('../views/Register');
+
+router.get('/', (req, res) => {
+  render(Register, {}, res);
+});
 
 router.post("/", async (req, res) => {
   const {

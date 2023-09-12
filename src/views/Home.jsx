@@ -1,7 +1,7 @@
-const React = require('react');
-const Layout = require('./Layout');
+const React = require("react");
+const Layout = require("./Layout");
 
-function Home({}) {
+function Home() {
   return (
     <Layout>
       <h1>Домашняя страница</h1>

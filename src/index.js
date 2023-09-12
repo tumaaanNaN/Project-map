@@ -6,10 +6,9 @@ const path = require("path");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 
-const Home = require("./views/Home");
-
 const routerRegister = require('./routes/register');
-const routerLogin = require('./routes/login')
+const routerLogin = require('./routes/login');
+const routerHome = require('./routes/home');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -30,15 +29,13 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use('/register', routerRegister);
-app.use('/login', routerLogin)
+app.use('/login', routerLogin);
+app.use('/', routerHome);
 
 app.listen(PORT, () => {
   console.log(`Server starting on PORT === ${PORT}`);
 });
 
-app.get("/home", async (req, res) => {
-  res.render(Home, {});
-});
 // app.use("*", (req, res) => {
 //   req?.session.user ? res.redirect("/decks") : res.redirect("/home");
 // });
