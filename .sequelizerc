@@ -6,3 +6,5 @@
     'migrations-path': path.resolve('db', 'migrations'),
   };
   
+
+  // npx sequelize-cli model:generate --name Itinerary --attributes rating:integer,1point:integer,2point:integer,name:string,length:integer,user_id:integer
