@@ -13,7 +13,7 @@ function Login() {
           flexDirection: 'column',
           marginTop: '100px',
           gap: '5px',
-        }} // Временно добавил стили сюда, потом нужно обязательно убрать их
+        }} 
       >
         <label htmlFor="login" className="form-label">
           Логин
