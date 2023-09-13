@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "admin",
+    "username": "main",
     "password": "123",
-    "database": "routes",
+    "database": "velo",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
