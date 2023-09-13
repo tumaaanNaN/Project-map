@@ -35,6 +35,3 @@ module.exports = {
     await queryInterface.dropTable('Users');
   }
 };
-
-
-// npx sequelize-cli model:generate --name Itinerary --attributes rating:integer,point1:json,point2:json,name:string,length:integer,user_id:integer

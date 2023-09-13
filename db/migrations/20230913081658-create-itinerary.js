@@ -10,28 +10,36 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       rating: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       point1: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       point2: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       city: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       name: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       length: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       feedback: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       user_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: {
             tableName: 'Users'
