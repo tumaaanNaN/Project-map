@@ -1,5 +1,5 @@
-const React = require("react");
-const Layout = require("./Layout");
+const React = require('react');
+const Layout = require('./Layout');
 
 function Login() {
   return (
@@ -9,10 +9,10 @@ function Login() {
         method="POST"
         className="login-container"
         style={{
-          display: "flex",
-          flexDirection: "column",
-          marginTop: "100px",
-          gap: "5px",
+          display: 'flex',
+          flexDirection: 'column',
+          marginTop: '100px',
+          gap: '5px',
         }} // Временно добавил стили сюда, потом нужно обязательно убрать их
       >
         <label htmlFor="login" className="form-label">

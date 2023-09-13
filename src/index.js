@@ -11,6 +11,7 @@ const routerRegister = require('./routes/register');
 const routerLogin = require('./routes/login');
 const routerMain = require('./routes/main');
 
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -32,6 +33,7 @@ app.use(session(sessionConfig));
 app.use('/register', routerRegister);
 app.use('/login', routerLogin);
 app.use('/', routerMain);
+
 
 app.listen(PORT, () => {
   console.log(`Server starting on PORT === ${PORT}`);

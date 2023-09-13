@@ -14,8 +14,8 @@ function Layout({ children, user }) {
         <title>Велопрогулки</title>
       </head>
       <body>
-        <div className='navbar-container'>
-        <NavBar user={user}/>
+        <div className="navbar-container">
+          <NavBar user={user} />
         </div>
         <div className="container">
           <div className="row">
