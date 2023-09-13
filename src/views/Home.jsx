@@ -4,7 +4,7 @@ const { Itinerary } = require('../../db/models');
 
 import { Button, CardActionArea, Box, Link, Grid, Card, CardContent, Typography } from '@mui/material';
 
-module.exports = function Home({ user }{ routes, author }) {
+module.exports = function Home({ routes, author }) {
   return (
     <Layout>
       <Box
