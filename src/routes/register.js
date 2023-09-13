@@ -2,7 +2,7 @@
 /* eslint-disable quotes */
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
-const { User } = require("../../db/models");
+const { User } = require('../../db/models');
 const render = require("../lib/renderTemplate");
 const Register = require('../views/Register');
 
