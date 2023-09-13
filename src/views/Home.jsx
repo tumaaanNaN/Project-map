@@ -43,19 +43,19 @@ module.exports = function Home({ routes, author }) {
         </div>
       </Box>
       <Grid item xs={12}>
-        <Typography variant="h1" style={{ textAlign: 'center', marginTop: '2cm', marginBottom: '2cm' }}>
+        <Typography variant="h2" style={{ textAlign: 'center', marginTop: '2cm', marginBottom: '2cm' }}>
           Готовые маршруты
         </Typography>
         <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'stretch', marginTop: '1cm' }}>
           {routes.map((el) => (
             <Card key={el.id} sx={{ maxWidth: 600, margin: '1cm' }}>
               <CardActionArea>
-                <div id="map" style={{ width: '600px', height: '370px' }}></div>
+              </CardActionArea>
+              <CardContent>
+              <div id="map" style={{ width: '600px', height: '370px' }}></div>
                 <input id="coordinates"></input>
                 <script src="https://api-maps.yandex.ru/2.1/?apikey=454e7c2a-3167-48eb-bcbe-fd1c343cac62&lang=ru_RU"></script>
                 <script async src="js/maps.js"></script>
-              </CardActionArea>
-              <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   Название: {el.name}
                 </Typography>
