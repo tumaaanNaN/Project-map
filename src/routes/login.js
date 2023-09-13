@@ -4,11 +4,11 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const { User } = require("../../db/models");
 const render = require("../lib/renderTemplate");
-const Login = require('../views/Login')
+const Login = require('../views/Login');
 
-router.get('/', (req,res) => {
-   render(Login, {}, res)
-})
+router.get('/', (req, res) => {
+  render(Login, {}, res);
+});
 router.post("/", async (req, res) => {
   try {
     const { login, password } = req.body;
@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
         email: user.email,
       };
       // console.log(req.session.user)
-      res.redirect("/next");
+      res.redirect("/");
     } else {
       res.redirect("/home");
     }
@@ -31,4 +31,5 @@ router.post("/", async (req, res) => {
     res.redirect("/home");
   }
 });
+
 module.exports = router;

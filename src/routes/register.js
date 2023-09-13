@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 router.post("/", async (req, res) => {
   const {
-    login, email, password, location,
+    login, name, password,
   } = req.body;
   try {
     const hashPass = await bcrypt.hash(password, 10);
@@ -22,18 +22,14 @@ router.post("/", async (req, res) => {
     } else {
       const newUser = await User.create({
         login,
-        email,
+        name,
         password: hashPass,
-        location,
       });
       req.session.user = {
         login: newUser.login,
         id: newUser.id,
-        location: newUser.location,
-        email: newUser.email,
       };
-      // console.log(req.session.user);
-      res.redirect("/next");
+      res.redirect("/");
     }
   } catch (error) {
     console.log(error);

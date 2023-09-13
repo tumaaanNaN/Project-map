@@ -122,28 +122,28 @@ ymaps.ready(() => {
     control.routePanel.switchPoints();
   });
   const submitpath = new ymaps.control.Button({
-    data: {content: 'Отправить', title: 'Отправить маршрут'}
+    data: { content: 'Отправить', title: 'Отправить маршрут' },
   });
 
   submitpath.events.add('click', () => {
     const coordinates = document.getElementById('coordinates');
     console.log([control.routePanel.state._data.from, control.routePanel.state._data.to, coordinates.value]);
     control.routePanel.state.set({
-        // Тип маршрутизации.
-        type: 'bicycle',
-        from: '',
-        to: '',
-        // Выключим возможность задавать пункт отправления в поле ввода.
-        // fromEnabled: false,
-        // Адрес или координаты пункта отправления.
-        // from: 'Москва, Льва Толстого 16',
-        // Включим возможность задавать пункт назначения в поле ввода.
-        toEnabled: true,
-        // Адрес или координаты пункта назначения.
-        // to: 'Петербург'
-      });
+      // Тип маршрутизации.
+      type: 'bicycle',
+      from: '',
+      to: '',
+      // Выключим возможность задавать пункт отправления в поле ввода.
+      // fromEnabled: false,
+      // Адрес или координаты пункта отправления.
+      // from: 'Москва, Льва Толстого 16',
+      // Включим возможность задавать пункт назначения в поле ввода.
+      toEnabled: true,
+      // Адрес или координаты пункта назначения.
+      // to: 'Петербург'
+    });
     coordinates.value = '';
-  })
+  });
 
   myMap.controls.add(switchPointsButton);
   myMap.controls.add(submitpath);
