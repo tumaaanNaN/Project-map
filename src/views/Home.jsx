@@ -1,12 +1,14 @@
+import {
+  Button, CardActionArea, Box, Link, Grid, Card, CardContent, Typography,
+} from '@mui/material';
+
 const React = require('react');
 const Layout = require('./Layout');
 const { Itinerary } = require('../../db/models');
 
-import { Button, CardActionArea, Box, Link, Grid, Card, CardContent, Typography } from '@mui/material';
-
-module.exports = function Home({ routes, author }) {
+module.exports = function Home({ routes, author, user }) {
   return (
-    <Layout>
+    <Layout user={user}>
       <Box
         style={{
           position: 'relative',
@@ -46,33 +48,45 @@ module.exports = function Home({ routes, author }) {
         <Typography variant="h2" style={{ textAlign: 'center', marginTop: '2cm', marginBottom: '2cm' }}>
           Готовые маршруты
         </Typography>
-        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'stretch', marginTop: '1cm' }}>
+        <div style={{
+          display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'stretch', marginTop: '1cm',
+        }}
+        >
           {routes.map((el) => (
             <Card key={el.id} sx={{ maxWidth: 600, margin: '1cm' }}>
-              <CardActionArea>
-              </CardActionArea>
+              <CardActionArea />
               <CardContent>
-              <div id="map" style={{ width: '600px', height: '370px' }}></div>
-                <input id="coordinates"></input>
-                <script src="https://api-maps.yandex.ru/2.1/?apikey=454e7c2a-3167-48eb-bcbe-fd1c343cac62&lang=ru_RU"></script>
-                <script async src="js/maps.js"></script>
+                <div id="map" style={{ width: '600px', height: '370px' }} />
+                <input id="coordinates" />
+                <script src="https://api-maps.yandex.ru/2.1/?apikey=454e7c2a-3167-48eb-bcbe-fd1c343cac62&lang=ru_RU" />
+                <script async src="js/maps.js" />
                 <Typography gutterBottom variant="h5" component="div">
-                  Название: {el.name}
+                  Название:
+                  {' '}
+                  {el.name}
                 </Typography>
                 <Typography gutterBottom variant="h5" component="div">
-                  Длина: {el.length} км
+                  Длина:
+                  {' '}
+                  {el.length}
+                  {' '}
+                  км
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Оценка: {el.rating}/5
+                  Оценка:
+                  {' '}
+                  {el.rating}
+                  /5
                 </Typography>
                 {author.map((auth) => (
                   <Typography key={auth.id} variant="body2" color="text.secondary">
-                    Автор: {auth.login}
+                    Автор:
+                    {' '}
+                    {auth.login}
                   </Typography>
                 ))}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div id='buttons'>
-                  </div>
+                  <div id="buttons" />
                   <Link href={`/${el.id}`}>
                     <Button size="small" color="primary">
                       Подробнее
