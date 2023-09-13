@@ -125,24 +125,53 @@ ymaps.ready(() => {
     data: { content: 'Отправить', title: 'Отправить маршрут' },
   });
 
-  submitpath.events.add('click', () => {
-    const coordinates = document.getElementById('coordinates');
-    console.log([control.routePanel.state._data.from, control.routePanel.state._data.to, coordinates.value]);
-    control.routePanel.state.set({
-      // Тип маршрутизации.
-      type: 'bicycle',
-      from: '',
-      to: '',
-      // Выключим возможность задавать пункт отправления в поле ввода.
-      // fromEnabled: false,
-      // Адрес или координаты пункта отправления.
-      // from: 'Москва, Льва Толстого 16',
-      // Включим возможность задавать пункт назначения в поле ввода.
-      toEnabled: true,
-      // Адрес или координаты пункта назначения.
-      // to: 'Петербург'
-    });
-    coordinates.value = '';
+  submitpath.events.add('click', async (event) => {
+    try {
+      event.preventDefault();
+      const coordinates = document.getElementById('coordinates');
+      const feedback = document.getElementById('feedback');
+      const { from } = control.routePanel.state._data;
+      const { to } = control.routePanel.state._data;
+      const name = coordinates.value;
+      const comment = feedback.value;
+      console.log(comment);
+      const response = await fetch('/profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from, to, name, comment,
+        }),
+      });
+      if (response.status === 400) {
+        alert('У вашего маршрута нет названия и вашего комментария');
+      } else if (response.status === 401) {
+        alert('У вашего маршрута нет комментария');
+      } else if (response.status === 402) {
+        alert('У вашего маршрута нет названия');
+      } else if (response.status === 403) {
+        alert('К сожалению, такой маршрут существует');
+      } else if (response.status === 200) {
+        alert('Ваш маршрут успешно добавлен');
+        control.routePanel.state.set({
+          // Тип маршрутизации.
+          type: 'bicycle',
+          from: '',
+          to: '',
+          // Выключим возможность задавать пункт отправления в поле ввода.
+          // fromEnabled: false,
+          // Адрес или координаты пункта отправления.
+          // from: 'Москва, Льва Толстого 16',
+          // Включим возможность задавать пункт назначения в поле ввода.
+          toEnabled: true,
+          // Адрес или координаты пункта назначения.
+          // to: 'Петербург'
+        });
+        coordinates.value = '';
+        feedback.value = '';
+      }
+    } catch (err) { console.log(err); }
   });
 
   myMap.controls.add(switchPointsButton);
