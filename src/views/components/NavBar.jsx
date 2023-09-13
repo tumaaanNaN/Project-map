@@ -9,6 +9,7 @@ import { Link, AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 
 
 const NavBar = ({ user }) => {
+  console.log(user, 'user---------------')
   return (
     <AppBar position="static" color="default">
       <Toolbar>

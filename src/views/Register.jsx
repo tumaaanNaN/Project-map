@@ -7,7 +7,7 @@ module.exports = function Register() {
       <form
         action="/register"
         method="POST"
-        className="login-container"
+        className="registerForm"
         style={{
           display: 'flex',
           flexDirection: 'column',

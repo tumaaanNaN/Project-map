@@ -1,3 +1,4 @@
+require("dotenv").config();
   const path = require('path');
   module.exports = {
     'config': path.resolve('db', 'config', 'database.json'),
@@ -5,4 +6,3 @@
     'seeders-path': path.resolve('db', 'seeders'),
     'migrations-path': path.resolve('db', 'migrations'),
   };
-  

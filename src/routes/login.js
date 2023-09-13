@@ -7,13 +7,16 @@ const render = require("../lib/renderTemplate");
 const Login = require('../views/Login');
 
 router.get('/', (req, res) => {
-  render(Login, {}, res);
+  render(Login, {user: req?.session.user || {}}, res);
 });
 router.post("/", async (req, res) => {
   try {
-    const { login, password } = req.body;
+    const { login, password } = req.body;///{ login: 'val@mail.ru', password: '123' }
+    console.log(req.body, 'req.body----------------------------------------')
     const user = await User.findOne({ where: { login }, raw: true });
-    const checkPassword = await bcrypt.compare(password, user.password);
+    console.log(user, 'user---------------------------------')//undefined
+    const checkPassword = await bcrypt.compare(password, user.password); 
+    console.log(checkPassword, 'проверяем пароль??')////true
     if (checkPassword) {
       req.session.user = {
         id: user.id,
@@ -21,7 +24,7 @@ router.post("/", async (req, res) => {
         location: user.location,
         email: user.email,
       };
-      // console.log(req.session.user)
+      console.log(req.session.user, 'сессия юзера-------------------------')
       res.redirect("/");
     } else {
       res.redirect("/home");
