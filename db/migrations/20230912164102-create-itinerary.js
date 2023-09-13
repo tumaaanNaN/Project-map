@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       rating: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       point1: {
         type: Sequelize.STRING
@@ -18,11 +18,17 @@ module.exports = {
       point2: {
         type: Sequelize.STRING
       },
+      city: {
+        type: Sequelize.STRING
+      },
       name: {
         type: Sequelize.STRING
       },
       length: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
+      },
+      feedback: {
+        type: Sequelize.TEXT
       },
       user_id: {
         type: Sequelize.INTEGER,
