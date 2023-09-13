@@ -9,12 +9,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Itinerary.init({
-    rating: DataTypes.INTEGER,
+    rating: DataTypes.STRING,
     point1: DataTypes.STRING,
     point2: DataTypes.STRING,
+    city: DataTypes.STRING,
     name: DataTypes.STRING,
-    length: DataTypes.INTEGER,
+    length: DataTypes.STRING,
+    feedback: DataTypes.TEXT,
     user_id: DataTypes.INTEGER
+
   }, {
     sequelize,
     modelName: 'Itinerary',
