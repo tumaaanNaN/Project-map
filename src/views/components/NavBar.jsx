@@ -1,20 +1,19 @@
-const React = require('react');
-
 // import AppBar from '@mui/material/AppBar';
 // import Toolbar from '@mui/material/Toolbar';
 // import Typography from '@mui/material/Typography';
 // import Button from '@mui/material/Button';
+import {
+  Link, AppBar, Toolbar, Typography, Button, Box,
+} from '@mui/material';
 
-import { Link, AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+const React = require('react');
 
-
-const NavBar = ({ user }) => {
-  console.log(user, 'user---------------')
+function NavBar({ user }) {
   return (
     <AppBar position="static" color="default">
       <Toolbar>
-        <Link href='/' >
-      <Box
+        <Link href="/">
+          <Box
             component="img"
             sx={{
               height: 70,
@@ -25,9 +24,9 @@ const NavBar = ({ user }) => {
             alt="logo"
             src="https://my-personal-bucket-for-objects.storage.yandexcloud.net/images/4f6954ae-0a47-44ea-be6f-d07e3e909547.png"
           />
-          </Link>
+        </Link>
         {/* <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}> */}
-          {/* <Typography variant="h6">
+        {/* <Typography variant="h6">
             Место для логотипа
             src = https://my-personal-bucket-for-objects.storage.yandexcloud.net/images/4f6954ae-0a47-44ea-be6f-d07e3e909547.png
           </Typography>
@@ -72,9 +71,7 @@ const NavBar = ({ user }) => {
       </Toolbar>
     </AppBar>
   );
-};
-
-
+}
 
 // const React = require('react');
 
