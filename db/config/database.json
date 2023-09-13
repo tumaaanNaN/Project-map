@@ -2,7 +2,7 @@
   "development": {
     "username": "admin",
     "password": "123",
-    "database": "bike",
+    "database": "routes",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

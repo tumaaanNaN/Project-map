@@ -18,14 +18,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return User;
 };
-
-// npx sequelize-cli model:generate --name Itinerary --attributes rating:integer,point1:string,point2:string,name:string,length:integer,user_id:integer
-// ['55.752446', '37.599596']
-
-
-// npx sequelize-cli model:generate --name Itinerary --attributes rating:integer,point1:string,point2:string,name:string,length:integer,user_id:integer
-
-//json.stringify когда записываем в бд
-//json.parse - когда забираем из 
-
-

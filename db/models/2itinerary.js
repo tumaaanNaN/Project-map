@@ -15,9 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     city: DataTypes.STRING,
     name: DataTypes.STRING,
     length: DataTypes.STRING,
-    feedback: DataTypes.TEXT,
+    feedback:DataTypes.TEXT,
     user_id: DataTypes.INTEGER
-
   }, {
     sequelize,
     modelName: 'Itinerary',

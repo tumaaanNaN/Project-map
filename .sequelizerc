@@ -6,6 +6,3 @@
     'migrations-path': path.resolve('db', 'migrations'),
   };
   
-
-  // npx sequelize-cli seed:generate --name User
-  // npx sequelize-cli seed:generate --name Itinerary
