@@ -1,9 +1,9 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function Home() {
+function Home({ user }) {
   return (
-    <Layout>
+    <Layout user={user}>
       <h1>Домашняя страница</h1>
       <input id="coordinates" />
       <div id="map" style={{ width: '500px', height: '370px' }} />

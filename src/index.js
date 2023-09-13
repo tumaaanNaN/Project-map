@@ -6,11 +6,11 @@ const path = require("path");
 const session = require("express-session");
 const FileStore = require("session-file-store")(session);
 
-
 const routerRegister = require('./routes/register');
 const routerLogin = require('./routes/login');
 const routerMain = require('./routes/main');
-
+const routerProfile = require("./routes/profile");
+const routerLogout = require('./routes/logout');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -33,7 +33,8 @@ app.use(session(sessionConfig));
 app.use('/register', routerRegister);
 app.use('/login', routerLogin);
 app.use('/', routerMain);
-
+app.use('/profile', routerProfile);
+app.use('/logout', routerLogout);
 
 app.listen(PORT, () => {
   console.log(`Server starting on PORT === ${PORT}`);
