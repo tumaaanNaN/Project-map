@@ -5,7 +5,7 @@ import {
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function Home({ routes, author, user }) {
+module.exports = function Home({ routes, user }) {
   return (
     <Layout user={user}>
       <Box
@@ -75,13 +75,11 @@ module.exports = function Home({ routes, author, user }) {
                   {el.rating}
                   /5
                 </Typography>
-                {author.map((auth) => (
-                  <Typography key={auth.id} variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary">
                     Автор:
                     {' '}
-                    {auth.login}
+                    {el["User.login"]}
                   </Typography>
-                ))}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <div id="buttons" />
                   <Link href={`/${el.id}`}>
