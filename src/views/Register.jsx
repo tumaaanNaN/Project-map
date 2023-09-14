@@ -1,54 +1,63 @@
 const React = require('react');
 const Layout = require('./Layout');
 
+import {TextField, Button, Container, Box, Typography } from '@mui/material';
+
 module.exports = function Register() {
-  return (
-    <Layout>
-      <form
-        action="/register"
-        method="POST"
-        className="login-container"
-        style={{
+return (
+  <Layout>
+    <Container maxWidth="sm">
+      <Box
+        sx={{
+          marginTop: 4,
           display: 'flex',
           flexDirection: 'column',
-          marginTop: '100px',
-          gap: '5px',
-        }} // Временно добавил стили сюда, потом нужно обязательно убрать их
+          alignItems: 'center',
+        }}
       >
-        <label htmlFor="login" className="form-label">
-          Логин
-          <input
-            type="text"
-            placeholder="Введите логин"
+        <form
+        action="/register"
+        method="POST"
+        className="registerForm">
+          <Typography> Логин </Typography>
+          <TextField
+            fullWidth
             name="login"
-            className="form-control"
-            required
+            variant="outlined"
+            margin="normal"
           />
-        </label>
-        <label htmlFor="name" className="form-label">
-          Имя
-          <input
-            type="text"
-            placeholder="Введите логин"
+      <Typography> Имя </Typography>
+          <TextField
+            fullWidth
             name="name"
-            className="form-control"
-            required
+            variant="outlined"
+            margin="normal"
           />
-        </label>
-        <label htmlFor="password" className="form-label">
-          Пароль
-          <input
-            type="password"
-            placeholder="Введите пароль"
+          <Typography> Пароль </Typography>
+          <TextField
+            fullWidth
             name="password"
-            className="form-control"
-            required
+            type="password"
+            variant="outlined"
+            margin="normal"
           />
-        </label>
-        <button type="submit" className="btn btn-primary">
-          Зарегистрироваться
-        </button>
-      </form>
-    </Layout>
-  );
-};
+          {/* <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            size="large"
+            sx={{ marginTop: 2 }}
+          >
+            Войти
+          </Button> */}
+          <button type="submit" className="btn btn-primary">
+        Зарегистрироваться
+      </button>
+        </form>
+      </Box>
+    </Container>
+    <script defer src="js/login.js" />
+  </Layout>
+);
+}

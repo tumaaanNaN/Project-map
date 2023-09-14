@@ -1,9 +1,6 @@
-import {
-  TextField, Button, Container, Box, Typography,
-} from '@mui/material';
-
 const React = require('react');
 const Layout = require('./Layout');
+import {TextField, Button, Container, Box, Typography } from '@mui/material';
 
 function Login() {
   return (
@@ -33,7 +30,7 @@ function Login() {
               variant="outlined"
               margin="normal"
             />
-            <Button
+            {/* <Button
               type="submit"
               variant="contained"
               color="primary"
@@ -42,7 +39,10 @@ function Login() {
               sx={{ marginTop: 2 }}
             >
               Войти
-            </Button>
+            </Button> */}
+            <button type="submit" className="btn btn-primary">
+          Войти
+        </button>
           </form>
         </Box>
       </Container>

@@ -4,9 +4,8 @@ import {
 
 const React = require('react');
 const Layout = require('./Layout');
-const { Itinerary } = require('../../db/models');
 
-module.exports = function Home({ routes, author, user }) {
+module.exports = function Home({ routes, user }) {
   return (
     <Layout user={user}>
       <Box
@@ -41,7 +40,7 @@ module.exports = function Home({ routes, author, user }) {
             borderRadius: '8px',
           }}
         >
-          <h2 style={{ margin: '0' }}>Добро пожаловать в сервис "Велопрогулки"! Здесь Вы можете найти как уже готовые маршруты, так и создать свои собственные</h2>
+          <Typography variant="h4" style={{ margin: '0' }}>Добро пожаловать в сервис "Велопрогулки"! Здесь Вы можете найти как уже готовые маршруты, так и создать свои собственные</Typography>
         </div>
       </Box>
       <Grid item xs={12}>
@@ -56,12 +55,7 @@ module.exports = function Home({ routes, author, user }) {
             <Card key={el.id} sx={{ maxWidth: 600, margin: '1cm' }}>
               <CardActionArea />
               <CardContent>
-                <div id="map" style={{ width: '600px', height: '370px' }} />
-                <input id="coordinates" />
-                <script src="https://api-maps.yandex.ru/2.1/?apikey=454e7c2a-3167-48eb-bcbe-fd1c343cac62&lang=ru_RU" />
-                <script async src="js/maps.js" />
                 <Typography gutterBottom variant="h5" component="div">
-                  Название:
                   {' '}
                   {el.name}
                 </Typography>
@@ -78,13 +72,13 @@ module.exports = function Home({ routes, author, user }) {
                   {el.rating}
                   /5
                 </Typography>
-                {author.map((auth) => (
-                  <Typography key={auth.id} variant="body2" color="text.secondary">
+                {/* {author.map((auth) => ( */}
+                  <Typography variant="body2" color="text.secondary">
                     Автор:
                     {' '}
-                    {auth.login}
+                    {el["User.login"]}
                   </Typography>
-                ))}
+                {/* // ))} */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <div id="buttons" />
                   <Link href={`/${el.id}`}>

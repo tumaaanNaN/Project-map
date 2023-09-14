@@ -1,10 +1,9 @@
 const React = require("react");
 const Layout = require("./Layout");
-const { Itinerary } = require('../../db/models');
 
 import { Button, CardActionArea, Typography, Box, Link, Grid, Card, CardContent, CardMedia,  TextField } from '@mui/material';
 
-module.exports = function Home({ oneRoute, author }) {
+module.exports = function Home({ oneRoute }) {
   return (
     <Layout>
       <Grid item xs={12}>
@@ -23,13 +22,11 @@ module.exports = function Home({ oneRoute, author }) {
               <Typography variant="h5" color="text.secondary">
                 Оценка: {oneRoute.rating}/5
               </Typography>
-              {author.map((el) => (
-                <Typography key={el.id} variant="body2" color="text.secondary">
-                  Автор: {el.login}
+                <Typography variant="body2" color="text.secondary">
+                  Автор: {oneRoute["User.login"]}
                 </Typography>
-              ))}
               <Typography>
-                Оцените маршрут
+                Оцените маршрут. Введите от 1 до 5
               <TextField
                 variant="outlined"
                 fullWidth

@@ -1,7 +1,3 @@
-// import AppBar from '@mui/material/AppBar';
-// import Toolbar from '@mui/material/Toolbar';
-// import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button';
 import {
   Link, AppBar, Toolbar, Typography, Button, Box,
 } from '@mui/material';
@@ -37,17 +33,17 @@ function NavBar({ user }) {
               <Typography variant="body1" style={{ marginRight: '16px' }}>
                 {`Привет ${user.login}`}
               </Typography>
-              <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              {/* <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <Button color="inherit">
                   {user.login}
                 </Button>
-              </a>
+              </a> */}
               <a href="/profile" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <Button color="inherit">
                   Профиль
                 </Button>
               </a>
-              <a href="/logout" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <a className='logout' style={{ textDecoration: 'none', color: 'inherit' }}>
                 <Button color="inherit">
                   Выйти
                 </Button>
@@ -69,9 +65,14 @@ function NavBar({ user }) {
           )}
         </div>
       </Toolbar>
+      <script defer src='/js/logout.js'/>
     </AppBar>
   );
 }
+
+module.exports = NavBar;
+
+
 
 // const React = require('react');
 
@@ -128,4 +129,3 @@ function NavBar({ user }) {
 //   );
 // }
 
-module.exports = NavBar;

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
+  console.log('logout---------------')
   req.session.destroy((error) => {
     if (error) {
       console.log(error);
@@ -12,4 +13,6 @@ router.get('/', (req, res) => {
   });
 });
 
+
 module.exports = router;
+
