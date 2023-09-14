@@ -71,27 +71,27 @@ module.exports = function Home({ oneRoute, user, rating }) {
                   </Typography>
                   {/* !!!!!!!добавить сюда комментарии из бд */}
                 </CardContent>
+                <form className='form-comment'>
+                    <Typography>
+                    Оцените маршрут. Введите от 1 до 5
+                    <input
+                      className='number'
+                      variant="outlined"
+                      fullWidth
+                      type="number"
+                      inputProps={{ min: 1, max: 5 }} 
+                    />
+                  </Typography>
                 <Typography>
-                  Оцените маршрут. Введите от 1 до 5
-                  <TextField
-                    variant="outlined"
-                    fullWidth
-                    type="number"
-                    inputProps={{ min: 1, max: 5 }}
-                  />
+                  Оставьте отзыв
                 </Typography>
-                <Typography>Оставьте отзыв</Typography>
-                <TextField
-                  sx={{ width: 560 }}
-                  id="outlined-basic"
-                  variant="outlined"
-                  rows={20}
-                />
+                <input sx={{ width: 560 }} id="outlined-basic" variant="outlined" rows={20} className='comment'/>
                 <Link>
-                  <Button variant="contained" color="primary">
+                  <Button className='btn-comment' data-id={oneRoute.id} variant="contained" color="primary">
                     Оценить маршрут
                   </Button>
                 </Link>
+                </form>
               </>
             )}
           </Card>
@@ -100,6 +100,7 @@ module.exports = function Home({ oneRoute, user, rating }) {
 
       <script src="https://api-maps.yandex.ru/2.1/?apikey=454e7c2a-3167-48eb-bcbe-fd1c343cac62&lang=ru_RU"></script>
       <script async src="js/route.js"></script>
+      <script async src='js/comment.js'></script>
     </Layout>
   );
 };

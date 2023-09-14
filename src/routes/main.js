@@ -33,11 +33,30 @@ router.get("/:id", async (req, res) => {
       where: { routerId: req.params.id },
     });
     const ratAll = rat.map((el) => Number(el.rating));
+    console.log(ratAll, rat);
     const rating = (ratAll.reduce((acc, cur) => acc + cur, 0) / ratAll.length).toFixed(1);
+    console.log( 'Рейтинг', rating);
     renderTemplate(OneRoute, { user: req.session.user, oneRoute, rating }, res);
   } catch (e) {
     console.error(e);
   }
 });
+
+router.post('/comment', async (req, res) => {
+  try {
+    const { com, num, id } = req.body;
+    if(!com && num){
+      res.sendStatus(400);
+    } else if (!num) {
+      res.sendStatus(401)
+    } else if (!com) {
+      res.sendStatus(402)
+    } else {
+      await Info.create({rating: num, feedback: com, routerId: Number(id)})
+      res.sendStatus(200);
+    }
+  }
+  catch(err){console.log(err);}
+})
 
 module.exports = router;
