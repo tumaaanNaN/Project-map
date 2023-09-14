@@ -5,7 +5,7 @@ import {
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function Home({ routes, user }) {
+module.exports = function Home({ routes, author, user }) {
   return (
     <Layout user={user}>
       <Box
@@ -51,11 +51,14 @@ module.exports = function Home({ routes, user }) {
           display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'stretch', marginTop: '1cm',
         }}
         >
-          {routes.map((el) => (
+          {routes.map((el, i) => (
             <Card key={el.id} sx={{ maxWidth: 600, margin: '1cm' }}>
               <CardActionArea />
               <CardContent>
+                <div className='main-map' id={`map${i}`} style={{ width: '600px', height: '370px' }} data-from={el.point1} data-to={el.point2} />
+                <script src="https://api-maps.yandex.ru/2.1/?apikey=454e7c2a-3167-48eb-bcbe-fd1c343cac62&lang=ru_RU" />
                 <Typography gutterBottom variant="h5" component="div">
+                  Название:
                   {' '}
                   {el.name}
                 </Typography>
@@ -72,13 +75,13 @@ module.exports = function Home({ routes, user }) {
                   {el.rating}
                   /5
                 </Typography>
-                {/* {author.map((auth) => ( */}
-                  <Typography variant="body2" color="text.secondary">
+                {author.map((auth) => (
+                  <Typography key={auth.id} variant="body2" color="text.secondary">
                     Автор:
                     {' '}
-                    {el["User.login"]}
+                    {auth.login}
                   </Typography>
-                {/* // ))} */}
+                ))}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <div id="buttons" />
                   <Link href={`/${el.id}`}>
@@ -90,6 +93,7 @@ module.exports = function Home({ routes, user }) {
               </CardContent>
             </Card>
           ))}
+          <script async src="js/main-route.js" />
         </div>
       </Grid>
     </Layout>
