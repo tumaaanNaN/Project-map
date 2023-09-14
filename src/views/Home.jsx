@@ -70,10 +70,9 @@ module.exports = function Home({ routes, user }) {
                   км
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Оценка:
+                  Город:
                   {' '}
-                  {el.rating}
-                  /5
+                  {el.city}
                 </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Автор:
