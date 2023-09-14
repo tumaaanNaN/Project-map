@@ -12,6 +12,7 @@ import {
   CardContent,
   CardMedia,
   TextField,
+  Container,
 } from "@mui/material";
 
 module.exports = function Home({ oneRoute, user, rating }) {
@@ -82,15 +83,17 @@ module.exports = function Home({ oneRoute, user, rating }) {
                       inputProps={{ min: 1, max: 5 }} 
                     />
                   </Typography>
-                <Typography>
+                <Typography marginTop='2%'>
                   Оставьте отзыв
                 </Typography>
                 <input sx={{ width: 560 }} id="outlined-basic" variant="outlined" rows={20} className='comment'/>
+                <div className='btn'>
                 <Link>
                   <Button className='btn-comment' data-id={oneRoute.id} variant="contained" color="primary">
                     Оценить маршрут
                   </Button>
                 </Link>
+                </div>
                 </form>
               </>
             )}
