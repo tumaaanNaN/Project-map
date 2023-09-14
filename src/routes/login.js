@@ -12,16 +12,14 @@ router.get('/', (req, res) => {
 router.post("/", async (req, res) => {
   try {
     console.log(req.body);
-    const { login, password } = req.body;
+    const { login, password, name } = req.body;
     const user = await User.findOne({ where: { login }, raw: true });
-    console.log(user, 'user---------------------------------')//undefined
     const checkPassword = await bcrypt.compare(password, user.password); 
-    console.log(checkPassword, 'проверяем пароль??')////true
     if (checkPassword) {
       req.session.user = {
         id: user.id,
+        name: user.name,
         login: user.login,
-        location: user.location,
         email: user.email,
       };
       // console.log(req.session.user);

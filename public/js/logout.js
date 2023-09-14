@@ -1,4 +1,5 @@
-const logoutBtn = document.getElementById('logout');
+console.log('hellooo')
+const logoutBtn = document.querySelector('.logout');
 logoutBtn.addEventListener('click', async () => {
   try {
     const response = await fetch('/logout');
