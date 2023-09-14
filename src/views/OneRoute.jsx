@@ -11,17 +11,30 @@ import {
   Card,
   CardContent,
   CardMedia,
-  TextField
-} from '@mui/material';
+  TextField,
+} from "@mui/material";
 
-module.exports = function Home({ oneRoute, user }) {
+module.exports = function Home({ oneRoute, user, rating }) {
   return (
-  <Layout user={user}>
+    <Layout user={user}>
       <Grid item xs={12}>
-        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'stretch', marginTop: '1cm' }}>
-          <Card sx={{ maxWidth: 600, margin: '1cm' }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexWrap: "wrap",
+            alignItems: "stretch",
+            marginTop: "1cm",
+          }}
+        >
+          <Card sx={{ maxWidth: 600, margin: "1cm" }}>
             <CardActionArea>
-              <div id="map" style={{ width: '600px', height: '370px' }} data-from={oneRoute.point1} data-to={oneRoute.point2}></div>
+              <div
+                id="map"
+                style={{ width: "600px", height: "370px" }}
+                data-from={oneRoute.point1}
+                data-to={oneRoute.point2}
+              ></div>
             </CardActionArea>
             {!user ? (
               <>
@@ -33,7 +46,7 @@ module.exports = function Home({ oneRoute, user }) {
                     Длина: {oneRoute.length} км
                   </Typography>
                   <Typography variant="h5" color="text.secondary">
-                    Оценка: {oneRoute.rating}/5
+                    Оценка: {rating}/5
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Автор: {oneRoute["User.login"]}
@@ -43,7 +56,7 @@ module.exports = function Home({ oneRoute, user }) {
               </>
             ) : (
               <>
-              <CardContent>
+                <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Название: {oneRoute.name}
                   </Typography>
@@ -51,26 +64,29 @@ module.exports = function Home({ oneRoute, user }) {
                     Длина: {oneRoute.length} км
                   </Typography>
                   <Typography variant="h5" color="text.secondary">
-                    Оценка: {oneRoute.rating}/5
+                    Оценка: {rating}/5
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Автор: {oneRoute["User.login"]}
                   </Typography>
                   {/* !!!!!!!добавить сюда комментарии из бд */}
                 </CardContent>
-                    <Typography>
-                    Оцените маршрут. Введите от 1 до 5
-                    <TextField
-                      variant="outlined"
-                      fullWidth
-                      type="number"
-                      inputProps={{ min: 1, max: 5 }} 
-                    />
-                  </Typography>
                 <Typography>
-                  Оставьте отзыв
+                  Оцените маршрут. Введите от 1 до 5
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    type="number"
+                    inputProps={{ min: 1, max: 5 }}
+                  />
                 </Typography>
-                <TextField sx={{ width: 560 }} id="outlined-basic" variant="outlined" rows={20} />
+                <Typography>Оставьте отзыв</Typography>
+                <TextField
+                  sx={{ width: 560 }}
+                  id="outlined-basic"
+                  variant="outlined"
+                  rows={20}
+                />
                 <Link>
                   <Button variant="contained" color="primary">
                     Оценить маршрут
