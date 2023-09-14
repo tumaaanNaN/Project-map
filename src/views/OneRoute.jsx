@@ -11,7 +11,7 @@ module.exports = function Home({ oneRoute, author }) {
         <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'stretch', marginTop: '1cm' }}>
           <Card sx={{ maxWidth: 600, margin: '1cm' }}>
             <CardActionArea>
-              <div id="map" style={{ width: '600px', height: '370px' }}></div>
+              <div id="map" style={{ width: '600px', height: '370px' }} data-from={oneRoute.point1} data-to={oneRoute.point2}></div>
             </CardActionArea>
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
@@ -50,10 +50,9 @@ module.exports = function Home({ oneRoute, author }) {
           </Card>
         </div>
       </Grid>
-      <div id="map" style={{ width: '600px', height: '370px' }}></div>
-      <input id="coordinates"></input>
+
     <script src="https://api-maps.yandex.ru/2.1/?apikey=454e7c2a-3167-48eb-bcbe-fd1c343cac62&lang=ru_RU"></script>
-    <script async src="js/maps.js"></script>
+    <script async src="js/route.js"></script>
     </Layout>
   );
 };
