@@ -4,8 +4,9 @@ const {
 
 module.exports = (sequelize, DataTypes) => {
   class Itinerary extends Model {
-    static associate({ User }) {
+    static associate({ User, Info }) {
       this.belongsTo(User, { foreignKey: 'user_id' });
+      this.hasMany(Info, {foreignKey: 'routerId'})
     }
   }
   Itinerary.init({
