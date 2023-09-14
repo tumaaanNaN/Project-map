@@ -129,25 +129,26 @@ ymaps.ready(() => {
     try {
       event.preventDefault();
       const coordinates = document.getElementById('coordinates');
-      const feedback = document.getElementById('feedback');
+      const bigcity = document.getElementById('city');
       const { from } = control.routePanel.state._data;
       const { to } = control.routePanel.state._data;
       const name = coordinates.value;
-      const comment = feedback.value;
-      console.log(comment);
+      const city = bigcity.value;
+      // const comment = feedback.value;
+      console.log(name, city);
       const response = await fetch('/profile', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from, to, name, comment,
+          from, to, name, city
         }),
       });
       if (response.status === 400) {
-        alert('У вашего маршрута нет названия и вашего комментария');
+        alert('У вашего маршрута нет названия и города');
       } else if (response.status === 401) {
-        alert('У вашего маршрута нет комментария');
+        alert('У вашего маршрута нет города');
       } else if (response.status === 402) {
         alert('У вашего маршрута нет названия');
       } else if (response.status === 403) {
@@ -169,7 +170,7 @@ ymaps.ready(() => {
           // to: 'Петербург'
         });
         coordinates.value = '';
-        feedback.value = '';
+        bigcity.value = '';
       }
     } catch (err) { console.log(err); }
   });

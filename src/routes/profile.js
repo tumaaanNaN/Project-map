@@ -14,13 +14,13 @@ router.get('/', Auf, async (req, res) => {
 router.post('/', Auf, async (req, res) => {
   try {
     const {
-      from, to, name, comment,
+      from, to, name, city,
     } = req.body;
     const { id } = req.session.user;
-    console.log(from, to, name, comment);
-    if (!name && !comment) {
+    console.log(from, to, name, city);
+    if (!name && !city) {
       res.sendStatus(400);
-    } else if (!comment) {
+    } else if (!city) {
       res.sendStatus(401);
     } else if (!name) {
       res.sendStatus(402);
@@ -30,7 +30,7 @@ router.post('/', Auf, async (req, res) => {
         res.sendStatus(403);
       } else {
         await Itinerary.create({
-          rating: 'Не определен', point1: from.join(), point2: to.join(), name, feedback: comment, user_id: Number(id),
+          rating: 'Не определен', point1: from.join(), point2: to.join(), name, city, feedback: 'Пока нет', user_id: Number(id),
         });
         res.sendStatus(200);
       }
