@@ -18,7 +18,11 @@ router.post("/", async (req, res) => {
     const hashPass = await bcrypt.hash(password, 10);
     const existUser = await User.findOne({ where: { login } });
     if (existUser) {
-      res.redirect("/register");
+      req.session.user = {
+        login: existUser.login,
+        id: existUser.id,
+      };
+      res.redirect("/");
     } else {
       const newUser = await User.create({
         login,
